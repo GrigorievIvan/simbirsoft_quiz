@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Контрольный опрос</title>
+        <link href="{% static 'quiz/style.css' %}" rel="stylesheet" type="text/css" />
+        <script>
+        </script>
+    </head>
+
+    <body>
+        <header contentEditable>
+            <div id="header">
+                <p>Тестирование</p>
+            </div>
+        </header>
+        <article contentEditable>
+            <div id="quiz_main">
+                <div id="description">
+                    Это тестирование предназначено для определения уровня Ваших знаний по языку Python
+                </div>
+                <div id="question_block">
+                    <div id="question_block_inner">
+                        <form action="{% url 'change_step' step=nextStep %}" method="post">
+                        {% csrf_token %}
+                        {% if step == 0 %}
+                        <div>
+                            <input type="submit" name="quiz_question_start_button" style="float: center; margin-top: 100px;" class="quiz_question_button" value="Начать тест">
+                        </div>    
+                        {% elif step == 1 %}
+                        <p>1. Какой из встроенных типов в Python неизменяем?</p>
+                        <ul class="quiz_question_ul" data-type="single">
+                            <li class="quiz_question" data-pos="1">
+                                <span style="display:none;">1. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_1" value="A"> Строки
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="2">
+                                <span style="display:none;">2. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_2" value="B"> Множества
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="0">
+                                <span style="display:none;">3. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_3" value="C"> Списки
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="3">
+                                <span style="display:none;">4. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_4" value="D"> Словари
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="control_bar">
+                            <input type="button" name="quiz_question_prev_button"  style="float: left;" class="quiz_question_button" value="Предыдущий вопрос">
+                            <input type="submit" name="quiz_question_next_button"  style="float: right;" class="quiz_question_button" value="Следующий вопрос">
+                            <div style="clear: both;"></div>
+                        </div>
+                        {% elif step == 2 %}
+                        <p>2. Необходимо собрать и вывести все уникальные слова из строки рекламного текста. Какой из перечисленных типов данных Python подходит лучше всего?</p>
+                        <ul class="quiz_question_ul" data-type="single">
+                            <li class="quiz_question" data-pos="1">
+                                <span style="display:none;">1. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_1" value="A"> КОРТЕЖ
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="2">
+                                <span style="display:none;">2. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_2" value="B"> СПИСОК
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="0">
+                                <span style="display:none;">3. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_3" value="C"> МНОЖЕСТВО
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="3">
+                                <span style="display:none;">4. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_4" value="D"> СЛОВАРЬ
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="control_bar">
+                            <input type="button" name="quiz_question_prev_button"  style="float: left;" class="quiz_question_button" value="Предыдущий вопрос">
+                            <input type="submit" name="quiz_question_next_button"  style="float: right;" class="quiz_question_button" value="Следующий вопрос">
+                            <div style="clear: both;"></div>
+                        </div>
+                        {% elif step == 3 %}
+                        <p>3. Какая из следующих функций преобразует строку в список в Python?</p>
+                        <ul class="quiz_question_ul" data-type="single">
+                            <li class="quiz_question" data-pos="1">
+                                <span style="display:none;">1. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_1" value="A"> list(mystring)
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="2">
+                                <span style="display:none;">2. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_2" value="B"> eval(mystring)
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="0">
+                                <span style="display:none;">3. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_3" value="C"> tuple(mystring)
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="3">
+                                <span style="display:none;">4. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="radio" name="answer_4" value="D"> repr(mystring)
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="control_bar">
+                            <input type="button" name="quiz_question_prev_button"  style="float: left;" class="quiz_question_button" value="Предыдущий вопрос">
+                            <input type="submit" name="quiz_question_next_button"  style="float: right;" class="quiz_question_button" value="Следующий вопрос">
+                            <div style="clear: both;"></div>
+                        </div>
+                        {% elif step == 4 %}
+                        <p>4. Как получить данные от пользователя?</p>
+                        <ul class="quiz_question_ul" data-type="single">
+                            <li class="quiz_question" data-pos="1">
+                                <span style="display:none;">1. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_1" value="A"> Использовать метод get()
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="2">
+                                <span style="display:none;">2. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_2" value="B"> Использовать метод cin()
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="0">
+                                <span style="display:none;">3. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_3" value="C"> Использовать метод read()
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="3">
+                                <span style="display:none;">4. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_4" value="D"> Использовать метод input()
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="control_bar">
+                            <input type="button" name="quiz_question_prev_button" style="float: left;" class="quiz_question_button" value="Предыдущий вопрос">
+                            <input type="submit" name="quiz_question_next_button" style="float: right;" class="quiz_question_button" value="Следующий вопрос">
+                            <div style="clear: both;"></div>
+                        </div>
+                        {% elif step == 5 %}
+                        <p>5. Что <b>не</b> является языком программирования?</p>
+                        <ul class="quiz_question_ul" data-type="single">
+                            <li class="quiz_question" data-pos="1">
+                                <span style="display:none;">1. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_1" value="A"> HTML
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="2">
+                                <span style="display:none;">2. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_2" value="B"> Java
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="0">
+                                <span style="display:none;">3. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_3" value="C"> CSS
+                                </label>
+                            </li>
+                            <li class="quiz_question" data-pos="3">
+                                <span style="display:none;">4. </span>
+                                <label>
+                                    <input class="quiz_question_input" autocomplete="off" type="checkbox" name="answer_4" value="D"> C#
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="control_bar">
+                            <input type="button" name="quiz_question_prev_button" style="float: left;" class="quiz_question_button" value="Предыдущий вопрос">
+                            <input type="submit" name="quiz_question_next_button" style="float: right;" class="quiz_question_button" value="Завершить тестирование">
+                            <div style="clear: both;"></div>
+                        </div>
+                        {% elif step == 6 %}
+                        <div>
+                            Поздравляем с завершением тестирования!<br />
+                            Ваш результат: 
+                        </div>
+                        {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <footer contentEditable>
+            <div id="footer_details">
+                <p>Copyright © Ivan G. 2022</p>
+                <p>Special for SimbirSoft</p>
+            </div>
+        </footer>
+    </body>
+</html>
